@@ -1,0 +1,23 @@
+<aspectj>
+    <aspects>
+        <aspect name="com.yq.starter.cat.aop.MysqlAspectLogger"/>
+        <aspect name="com.yq.starter.cat.aop.ThreadAspectLogger"/>
+        <aspect name="com.yq.starter.cat.aop.HttpClientAspectLogger"/>
+        <aspect name="com.yq.starter.cat.aop.HttpRequestAspectLogger"/>
+        <aspect name="com.yq.starter.cat.aop.OkHttpAspectLogger"/>
+        <aspect name="com.yq.starter.cat.aop.RabbitMqReceiveAspectLogger"/>
+        <aspect name="com.yq.starter.cat.aop.RabbitMqSendAspectLogger"/>
+        <aspect name="com.yq.starter.cat.aop.HttpTemplateAspectLogger"/>
+    </aspects>
+
+    <weaver options="-Xset:weaveJavaxPackages=false -Xlint:ignore -verbose -showWeaveInfo">
+        <include within="com.yq..*"/>
+        <include within="com.mysql.cj.jdbc..*"/>
+        <include within="org.apache.http..*"/>
+        <include within="com.github.kevinsawicki.http.HttpRequest"/>
+        <include within="okhttp3.RealCall"/>
+        <include within="org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter"/>
+        <include within="org.springframework.amqp.rabbit.core.RabbitTemplate"/>
+        <include within="org.springframework.web.client.RestTemplate"/>
+    </weaver>
+</aspectj>
